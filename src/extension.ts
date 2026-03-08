@@ -56,12 +56,12 @@ const STATUS_COLORS: Record<string, string> = {
 	'R': '#3b82f6',
 };
 
-type SortKey = 'added' | 'removed' | 'status' | 'name';
+type SortKey = 'added' | 'removed' | 'status' | 'name' | 'path';
 
 class LineChangesViewProvider implements vscode.WebviewViewProvider {
 	private _view?: vscode.WebviewView;
 	private workspaceRoot: string;
-	private sortBy: SortKey = 'name';
+	private sortBy: SortKey = 'path';
 	private sortReversed = false;
 
 	constructor(workspaceRoot: string) {
@@ -124,6 +124,9 @@ class LineChangesViewProvider implements vscode.WebviewViewProvider {
 				break;
 			case 'status':
 				sorted.sort((a, b) => dir * a.status.localeCompare(b.status));
+				break;
+			case 'path':
+				sorted.sort((a, b) => dir * a.filePath.localeCompare(b.filePath));
 				break;
 		}
 		return sorted;
@@ -323,7 +326,7 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerCommand('gitLineCountSummary.refresh', () => provider.refresh())
 	);
 
-	for (const key of ['name', 'added', 'removed', 'status'] as SortKey[]) {
+	for (const key of ['name', 'added', 'removed', 'status', 'path'] as SortKey[]) {
 		context.subscriptions.push(
 			vscode.commands.registerCommand(`gitLineCountSummary.sortBy.${key}`, () => provider.setSortBy(key))
 		);

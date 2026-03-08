@@ -8,7 +8,7 @@
     "url": "https://github.com/ape1121/git-line-count-summary"
   },
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.109.0"
@@ -42,6 +42,10 @@
       {
         "command": "gitLineCountSummary.sortBy.name",
         "title": "Name"
+      },
+      {
+        "command": "gitLineCountSummary.sortBy.path",
+        "title": "Path"
       }
     ],
     "submenus": [
@@ -89,6 +93,10 @@
         {
           "command": "gitLineCountSummary.sortBy.name",
           "group": "sort@4"
+        },
+        {
+          "command": "gitLineCountSummary.sortBy.path",
+          "group": "sort@5"
         }
       ]
     }
