@@ -19,6 +19,29 @@
         "command": "gitLineCountSummary.refresh",
         "title": "Refresh Line Counts",
         "icon": "$(refresh)"
+      },
+      {
+        "command": "gitLineCountSummary.sortBy.added",
+        "title": "Added Lines"
+      },
+      {
+        "command": "gitLineCountSummary.sortBy.removed",
+        "title": "Deleted Lines"
+      },
+      {
+        "command": "gitLineCountSummary.sortBy.status",
+        "title": "Status"
+      },
+      {
+        "command": "gitLineCountSummary.sortBy.name",
+        "title": "Name"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "gitLineCountSummary.sortMenu",
+        "label": "Sort By...",
+        "icon": "$(sort-precedence)"
       }
     ],
     "views": {
@@ -36,6 +59,29 @@
           "command": "gitLineCountSummary.refresh",
           "when": "view == gitLineCountSummary",
           "group": "navigation"
+        },
+        {
+          "submenu": "gitLineCountSummary.sortMenu",
+          "when": "view == gitLineCountSummary",
+          "group": "navigation"
+        }
+      ],
+      "gitLineCountSummary.sortMenu": [
+        {
+          "command": "gitLineCountSummary.sortBy.added",
+          "group": "sort@1"
+        },
+        {
+          "command": "gitLineCountSummary.sortBy.removed",
+          "group": "sort@2"
+        },
+        {
+          "command": "gitLineCountSummary.sortBy.status",
+          "group": "sort@3"
+        },
+        {
+          "command": "gitLineCountSummary.sortBy.name",
+          "group": "sort@4"
         }
       ]
     }
