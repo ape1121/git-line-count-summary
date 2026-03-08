@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(npx tsc -p ./)",
-      "Bash(npm install @vscode/codicons)"
+      "Bash(npm install @vscode/codicons)",
+      "Bash(npx @vscode/vsce ls)"
     ]
   }
 }

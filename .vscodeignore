@@ -2,6 +2,7 @@
 .vscode-test/**
 src/**
 .gitignore
+.gitattributes
 .yarnrc
 vsc-extension-quickstart.md
 **/tsconfig.json
@@ -9,3 +10,11 @@ vsc-extension-quickstart.md
 **/*.map
 **/*.ts
 **/.vscode-test.*
+preview.png
+CHANGELOG.md
+out/test/**
+.claude/**
+node_modules/@vscode/codicons/**
+!node_modules/@vscode/codicons/package.json
+!node_modules/@vscode/codicons/dist/codicon.css
+!node_modules/@vscode/codicons/dist/codicon.ttf
