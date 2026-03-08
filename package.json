@@ -2,6 +2,12 @@
   "name": "git-line-count-summary",
   "displayName": "Git Line Count Summary",
   "description": "Shows added and removed line counts in git changes.",
+  "publisher": "ape1121",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ape1121/git-line-count-summary"
+  },
+  "license": "MIT",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.109.0"
