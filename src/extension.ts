@@ -134,14 +134,14 @@ class LineChangesViewProvider implements vscode.WebviewViewProvider {
 		const rows = sorted.map((s) => {
 			const fileName = path.basename(s.filePath);
 			const dir = path.dirname(s.filePath);
-			const dirDisplay = dir === '.' ? '' : dir + '/';
+			const dirDisplay = dir === '.' ? '' : dir.replace(/\//g, '\\') + '\\';
 			const escapedPath = s.filePath.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
 			const iconInfo = this.getFileIconInfo(s.filePath);
 			const statusColor = STATUS_COLORS[s.status] ?? '#8a8a8a';
 			const clickAction = s.status === 'D' ? 'showDiff' : 'openFile';
 			return `<div class="row" onclick="send('${clickAction}','${escapedPath}')" title="${s.filePath}">
 				<span class="codicon ${iconInfo.codicon} file-icon" style="color:${iconInfo.color}"></span>
-				<span class="name"><span class="dir">${dirDisplay}</span>${fileName}</span>
+				<span class="name">${fileName}${dirDisplay ? `<span class="dir">${dirDisplay}</span>` : ''}</span>
 				<span class="stats">
 					<span class="added">+${s.added}</span>
 					<span class="removed">-${s.removed}</span>
@@ -192,7 +192,9 @@ ${codiconsHref ? `<link rel="stylesheet" href="${codiconsHref}">` : ''}
 		white-space: nowrap;
 	}
 	.dir {
-		opacity: 0.6;
+		opacity: 0.7;
+		font-size: 0.92em;
+		margin-left: 6px;
 	}
 	.stats {
 		flex-shrink: 0;
