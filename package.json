@@ -8,7 +8,7 @@
     "url": "https://github.com/ape1121/git-line-count-summary"
   },
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.109.0"
