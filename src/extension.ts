@@ -9,44 +9,52 @@ interface DiffStat {
 	status: string;
 }
 
-const FILE_ICON_MAP: Record<string, { codicon: string; color: string }> = {
-	'.ts':    { codicon: 'codicon-file-code', color: '#3178c6' },
-	'.tsx':   { codicon: 'codicon-file-code', color: '#3178c6' },
-	'.js':    { codicon: 'codicon-file-code', color: '#f1e05a' },
-	'.jsx':   { codicon: 'codicon-file-code', color: '#f1e05a' },
-	'.json':  { codicon: 'codicon-json',      color: '#cb8622' },
-	'.py':    { codicon: 'codicon-file-code', color: '#3572a5' },
-	'.cs':    { codicon: 'codicon-file-code', color: '#178600' },
-	'.c':     { codicon: 'codicon-file-code', color: '#555555' },
-	'.cpp':   { codicon: 'codicon-file-code', color: '#f34b7d' },
-	'.h':     { codicon: 'codicon-file-code', color: '#555555' },
-	'.java':  { codicon: 'codicon-file-code', color: '#b07219' },
-	'.go':    { codicon: 'codicon-file-code', color: '#00add8' },
-	'.rs':    { codicon: 'codicon-file-code', color: '#dea584' },
-	'.rb':    { codicon: 'codicon-file-code', color: '#701516' },
-	'.php':   { codicon: 'codicon-file-code', color: '#4f5d95' },
-	'.swift': { codicon: 'codicon-file-code', color: '#f05138' },
-	'.kt':    { codicon: 'codicon-file-code', color: '#a97bff' },
-	'.html':  { codicon: 'codicon-file-code', color: '#e34c26' },
-	'.css':   { codicon: 'codicon-file-code', color: '#563d7c' },
-	'.scss':  { codicon: 'codicon-file-code', color: '#c6538c' },
-	'.md':    { codicon: 'codicon-markdown',  color: '#083fa1' },
-	'.yml':   { codicon: 'codicon-file-code', color: '#cb171e' },
-	'.yaml':  { codicon: 'codicon-file-code', color: '#cb171e' },
-	'.xml':   { codicon: 'codicon-file-code', color: '#0060ac' },
-	'.sh':    { codicon: 'codicon-terminal',  color: '#89e051' },
-	'.bash':  { codicon: 'codicon-terminal',  color: '#89e051' },
-	'.sql':   { codicon: 'codicon-database',  color: '#e38c00' },
-	'.svg':   { codicon: 'codicon-file-media', color: '#ff9900' },
-	'.png':   { codicon: 'codicon-file-media', color: '#a074c4' },
-	'.jpg':   { codicon: 'codicon-file-media', color: '#a074c4' },
-	'.gif':   { codicon: 'codicon-file-media', color: '#a074c4' },
-	'.txt':   { codicon: 'codicon-file',      color: '#8a8a8a' },
-	'.log':   { codicon: 'codicon-file',      color: '#8a8a8a' },
-	'.env':   { codicon: 'codicon-file',      color: '#8a8a8a' },
+interface FileIconInfo {
+	codicon: string;
+	color: string;
+	isCode: boolean;
+}
+
+const FILE_ICON_MAP: Record<string, FileIconInfo> = {
+	// Code files
+	'.ts':    { codicon: 'codicon-file-code', color: '#3178c6', isCode: true },
+	'.tsx':   { codicon: 'codicon-file-code', color: '#3178c6', isCode: true },
+	'.js':    { codicon: 'codicon-file-code', color: '#f1e05a', isCode: true },
+	'.jsx':   { codicon: 'codicon-file-code', color: '#f1e05a', isCode: true },
+	'.py':    { codicon: 'codicon-file-code', color: '#3572a5', isCode: true },
+	'.cs':    { codicon: 'codicon-file-code', color: '#178600', isCode: true },
+	'.c':     { codicon: 'codicon-file-code', color: '#555555', isCode: true },
+	'.cpp':   { codicon: 'codicon-file-code', color: '#f34b7d', isCode: true },
+	'.h':     { codicon: 'codicon-file-code', color: '#555555', isCode: true },
+	'.java':  { codicon: 'codicon-file-code', color: '#b07219', isCode: true },
+	'.go':    { codicon: 'codicon-file-code', color: '#00add8', isCode: true },
+	'.rs':    { codicon: 'codicon-file-code', color: '#dea584', isCode: true },
+	'.rb':    { codicon: 'codicon-file-code', color: '#701516', isCode: true },
+	'.php':   { codicon: 'codicon-file-code', color: '#4f5d95', isCode: true },
+	'.swift': { codicon: 'codicon-file-code', color: '#f05138', isCode: true },
+	'.kt':    { codicon: 'codicon-file-code', color: '#a97bff', isCode: true },
+	'.html':  { codicon: 'codicon-file-code', color: '#e34c26', isCode: true },
+	'.css':   { codicon: 'codicon-file-code', color: '#563d7c', isCode: true },
+	'.scss':  { codicon: 'codicon-file-code', color: '#c6538c', isCode: true },
+	'.yml':   { codicon: 'codicon-file-code', color: '#cb171e', isCode: true },
+	'.yaml':  { codicon: 'codicon-file-code', color: '#cb171e', isCode: true },
+	'.xml':   { codicon: 'codicon-file-code', color: '#0060ac', isCode: true },
+	// Non-code files
+	'.json':  { codicon: 'codicon-json',       color: '#cb8622', isCode: false },
+	'.md':    { codicon: 'codicon-markdown',   color: '#083fa1', isCode: false },
+	'.sh':    { codicon: 'codicon-terminal',   color: '#89e051', isCode: false },
+	'.bash':  { codicon: 'codicon-terminal',   color: '#89e051', isCode: false },
+	'.sql':   { codicon: 'codicon-database',   color: '#e38c00', isCode: false },
+	'.svg':   { codicon: 'codicon-file-media', color: '#ff9900', isCode: false },
+	'.png':   { codicon: 'codicon-file-media', color: '#a074c4', isCode: false },
+	'.jpg':   { codicon: 'codicon-file-media', color: '#a074c4', isCode: false },
+	'.gif':   { codicon: 'codicon-file-media', color: '#a074c4', isCode: false },
+	'.txt':   { codicon: 'codicon-file',       color: '#8a8a8a', isCode: false },
+	'.log':   { codicon: 'codicon-file',       color: '#8a8a8a', isCode: false },
+	'.env':   { codicon: 'codicon-file',       color: '#8a8a8a', isCode: false },
 };
 
-const DEFAULT_ICON = { codicon: 'codicon-file', color: '#8a8a8a' };
+const DEFAULT_ICON: FileIconInfo = { codicon: 'codicon-file', color: '#8a8a8a', isCode: false };
 
 const STATUS_COLORS: Record<string, string> = {
 	'D': '#b73d36',
@@ -63,9 +71,17 @@ class LineChangesViewProvider implements vscode.WebviewViewProvider {
 	private workspaceRoot: string;
 	private sortBy: SortKey = 'path';
 	private sortReversed = false;
+	private codeFilterOn = false;
+	private cachedStats: DiffStat[] = [];
 
 	constructor(workspaceRoot: string) {
 		this.workspaceRoot = workspaceRoot;
+	}
+
+	toggleCodeFilter(): void {
+		this.codeFilterOn = !this.codeFilterOn;
+		vscode.commands.executeCommand('setContext', 'gitLineCountSummary.codeFilterOn', this.codeFilterOn);
+		this.render();
 	}
 
 	setSortBy(key: SortKey): void {
@@ -100,11 +116,22 @@ class LineChangesViewProvider implements vscode.WebviewViewProvider {
 
 	refresh(): void {
 		if (!this._view) { return; }
-		const stats = this.getDiffStats();
-		this._view.webview.html = this.getHtml(stats);
+		this.cachedStats = this.getDiffStats();
+		this.render();
 	}
 
-	private getFileIconInfo(filePath: string): { codicon: string; color: string } {
+	private render(): void {
+		if (!this._view) { return; }
+		const filtered = this.codeFilterOn
+			? this.cachedStats.filter(s => this.getFileIconInfo(s.filePath).isCode)
+			: this.cachedStats;
+		const totalAdded = filtered.reduce((sum, s) => sum + s.added, 0);
+		const totalRemoved = filtered.reduce((sum, s) => sum + s.removed, 0);
+		this._view.description = filtered.length > 0 ? `+${totalAdded} -${totalRemoved}` : '';
+		this._view.webview.html = this.getHtml(filtered);
+	}
+
+	private getFileIconInfo(filePath: string): FileIconInfo {
 		const ext = path.extname(filePath).toLowerCase();
 		return FILE_ICON_MAP[ext] ?? DEFAULT_ICON;
 	}
@@ -324,6 +351,11 @@ export function activate(context: vscode.ExtensionContext) {
 
 	context.subscriptions.push(
 		vscode.commands.registerCommand('gitLineCountSummary.refresh', () => provider.refresh())
+	);
+
+	context.subscriptions.push(
+		vscode.commands.registerCommand('gitLineCountSummary.toggleCodeFilter', () => provider.toggleCodeFilter()),
+		vscode.commands.registerCommand('gitLineCountSummary.toggleCodeFilterOff', () => provider.toggleCodeFilter())
 	);
 
 	for (const key of ['name', 'added', 'removed', 'status', 'path'] as SortKey[]) {

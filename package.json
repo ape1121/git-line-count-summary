@@ -28,6 +28,16 @@
         "icon": "$(refresh)"
       },
       {
+        "command": "gitLineCountSummary.toggleCodeFilter",
+        "title": "Show Code Files Only",
+        "icon": "$(filter)"
+      },
+      {
+        "command": "gitLineCountSummary.toggleCodeFilterOff",
+        "title": "Show All Files",
+        "icon": "$(filter-filled)"
+      },
+      {
         "command": "gitLineCountSummary.sortBy.added",
         "title": "Added Lines"
       },
@@ -69,12 +79,22 @@
         {
           "command": "gitLineCountSummary.refresh",
           "when": "view == gitLineCountSummary",
-          "group": "navigation"
+          "group": "navigation@3"
+        },
+        {
+          "command": "gitLineCountSummary.toggleCodeFilter",
+          "when": "view == gitLineCountSummary && !gitLineCountSummary.codeFilterOn",
+          "group": "navigation@2"
+        },
+        {
+          "command": "gitLineCountSummary.toggleCodeFilterOff",
+          "when": "view == gitLineCountSummary && gitLineCountSummary.codeFilterOn",
+          "group": "navigation@2"
         },
         {
           "submenu": "gitLineCountSummary.sortMenu",
           "when": "view == gitLineCountSummary",
-          "group": "navigation"
+          "group": "navigation@1"
         }
       ],
       "gitLineCountSummary.sortMenu": [

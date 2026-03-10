@@ -3,7 +3,13 @@
     "allow": [
       "Bash(npx tsc -p ./)",
       "Bash(npm install @vscode/codicons)",
-      "Bash(npx @vscode/vsce ls)"
+      "Bash(npx @vscode/vsce ls)",
+      "Bash(npm run compile)",
+      "Bash(npx tsc -p ./ --noEmit)",
+      "Bash(npx -p typescript tsc -p ./ --noEmit)",
+      "Bash(node_modules/.bin/tsc -p ./)",
+      "Bash(ls node_modules/.bin/tsc*)",
+      "Bash(npm install)"
     ]
   }
 }
